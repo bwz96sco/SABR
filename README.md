@@ -76,6 +76,12 @@ cd build_env_c_plus
 bash build_all.sh
 ```
 
+macOS note (Apple Silicon): build scripts auto-detect `.venv` and use its Python; ensure `pybind11` is installed in that env (`uv pip install -r requirements.txt`). To override the Python used:
+```bash
+PYTHON_BIN=$(uv python find 3.10) bash build_all.sh
+```
+This fixes missing `pybind11` includes and unresolved Python symbols.
+
 ### Step 4 — Train and auto-evaluate
 ```bash
 python train_sabr.py

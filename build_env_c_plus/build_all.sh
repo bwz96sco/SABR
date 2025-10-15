@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euxo pipefail
 
-# 顺序执行四个构建脚本
+# Build native DP binary and pybind11 modules (stop on first error)
 bash build_dp.sh
 bash build_rl.sh
 bash build_rl_mpc.sh

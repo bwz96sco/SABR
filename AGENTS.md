@@ -40,3 +40,8 @@
 - Dataset name must match: `config.py::_DATASET` ↔ `config.h::DATASET_OPTION`; rebuild after edits.
 - `LOG_FILE_DIR` is auto-created by `config.py`—commit code, not generated outputs.
 - `dp_my` may fail on some traces; note skips in PRs if applicable.
+
+## macOS Build Notes
+- The build scripts prefer `.venv/bin/python` and add `-undefined dynamic_lookup` on macOS to resolve Python symbols.
+- Ensure `pybind11` is installed in the active env: `uv pip install -r requirements.txt`.
+- Override the Python used if needed: `PYTHON_BIN=/path/to/python bash build_env_c_plus/build_all.sh`.

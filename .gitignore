@@ -12,3 +12,7 @@ model_data/*
 video_trace/trace/*
 bak/*
 experiment_script
+
+*.log
+dp_my
+.DS_Store
