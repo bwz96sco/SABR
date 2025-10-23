@@ -11,6 +11,23 @@
 
 ![SABR overview](./assets/sabr.png)
 
+当然可以，以下是保持原有 Markdown 结构与格式的英文翻译版本：
+
+## ⚙️ Features
+
+### 1️⃣ Standardized Gym Interface
+
+* The simulation environment is implemented following the **OpenAI Gym** (or Gymnasium) interface standard.
+* It is theoretically compatible with various RL algorithms in **[Stable Baselines3](https://github.com/DLR-RM/stable-baselines3)**, including:
+  ✅ PPO ✅ SAC ✅ DQN ✅ TD3 ✅ A2C, etc.
+* Supports **[VecEnv](https://stable-baselines3.readthedocs.io/en/master/guide/vec_envs.html)** parallel simulation environments for improved training efficiency.
+
+### 2️⃣ High-Performance C++ Simulation Core
+
+* The **ABR simulation environment (for training)** is implemented in **C++** and wrapped as a Python library via **pybind11**.
+* Compared with a pure Python implementation, it offers higher simulation efficiency.
+
+
 
 
 ## Prerequisites

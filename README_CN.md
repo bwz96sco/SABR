@@ -3,16 +3,24 @@
 **SABR (Stable Adaptive Bitrate)** 是一个面向自适应码率（ABR）决策的学习框架。SABR 引入了**两阶段训练范式 Pretraining + Fine-tuning**：
 
 1. **行为克隆 (Behavior Cloning, BC) 预训练**  
-   - 基于专家策略（如 MPC 束搜索）的演示数据，利用 **DPO（Direct Preference Optimization）** 算法进行高效稳定的模仿学习。  
+   - 基于专家策略（如 MPC、束搜索）的演示数据，利用 **DPO（Direct Preference Optimization）** 算法进行高效稳定的模仿学习。  
 2. **强化学习 (Reinforcement Learning, RL) 微调**  
    - 以预训练模型为基础，采用 **PPO（Proximal Policy Optimization）** 进行深度探索和策略优化。  
  
 
 ![SABR 原理](./assets/sabr.png)
 
-<!-- > 你可以把一张结构图放在 `docs/assets/sabr.png`，然后在文档中引用：  
-> `![SABR 逻辑示意图](docs/assets/sabr.png)`  
-> （也可以选择 `assets/sabr.png` 或 `figs/sabr.png`，只要保持统一即可。） -->
+## ⚙️ 特性（Features）
+
+### 1️⃣ 标准化 Gym 接口封装  
+- 仿真环境符合 **OpenAI Gym (或Gymnasium)**  接口标准封装：    
+- 理论上支持 **[Stable Baselines3](https://github.com/DLR-RM/stable-baselines3)** 中的多种RL 算法：  
+  ✅ PPO ✅ SAC ✅ DQN ✅ TD3 ✅ A2C 等  
+- 支持 **[VecEnv 并行仿真环境](https://stable-baselines3.readthedocs.io/en/master/guide/vec_envs.html)** ，可提升训练效率。
+
+### 2️⃣ 高性能 C++ 仿真核心  
+- **ABR 仿真环境（用于训练）采用 C++ 实现**，通过 **pybind11** 封装为 Python 库使用。  
+- 相比纯 Python 实现，具备更高的仿真效率
 
 
 ## 环境准备（Prerequisites）
