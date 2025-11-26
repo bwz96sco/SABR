@@ -53,6 +53,7 @@ def main():
 
     video_count = 0
 
+    batch_rewards = []
     while True:  # serve video forever
         # the action is from the last decision
         # this is to make the framework similar to the real
@@ -98,6 +99,8 @@ def main():
 
             last_bit_rate = DEFAULT_QUALITY
             bit_rate = DEFAULT_QUALITY  # use the default action here
+            batch_reward = np.sum(r_batch)
+            batch_rewards.append(batch_reward)
             r_batch = []
 
             print("video count", video_count)
@@ -108,6 +111,10 @@ def main():
 
             log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
             log_file = open(log_path, 'w')
+    total_reward = np.sum(batch_rewards)
+    average_reward = total_reward / len(batch_rewards)
+    print("total reward", total_reward)
+    print("average reward", average_reward)
 
 
 if __name__ == '__main__':
