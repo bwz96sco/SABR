@@ -22,7 +22,7 @@ Dataset options (set DATASET_OPTION below):
 */
 
 // !!! change here to choose dataset
-#define DATASET_OPTION 30
+#define DATASET_OPTION 2
 
 // Only used by DP runner (single-dir evaluation).
 // Mixed sets (20/30) are left empty on purpose and assembled on the Python side.

@@ -2,14 +2,19 @@
 # ABRBench CONFIG (paths match your latest folders)
 # =========================
 
+import os
+
 # Choose one:
 # 'FCC-16','FCC-18','Oboe','Puffer-21','Puffer-22','HSR',
 # 'Norway3G','Lumos4G','Lumos5G','SolisWi-Fi','Ghent','Lab',
 # 'ABRBench-3G','ABRBench-4G+'
-_DATASET = 'ABRBench-4G+'   # change as needed
+# _DATASET = 'ABRBench-4G+'   # change as needed
+_DATASET = 'FCC-18'   # change as needed
 
-# Base directories
-BASE_DIR = './ABRBench'
+# Base directories (defaults next to this config; override via ABRBENCH_BASE_DIR)
+_CONFIG_DIR = os.path.dirname(os.path.abspath(__file__))
+_DEFAULT_BASE_DIR = os.path.join(_CONFIG_DIR, 'ABRBench')
+BASE_DIR = os.path.abspath(os.environ.get('ABRBENCH_BASE_DIR', _DEFAULT_BASE_DIR))
 VIDEO_DIR = f'{BASE_DIR}/video'
 TRACE_DIR = f'{BASE_DIR}/trace'
 
@@ -174,7 +179,6 @@ LOG_FILE_DIR = config['LOG_FILE_DIR']
 
 DATASET_NAME = _DATASET
 
-import os
 if not os.path.exists(LOG_FILE_DIR):
     os.makedirs(LOG_FILE_DIR)
     print(f"LOG_FILE_DIR '{LOG_FILE_DIR}' created.")
