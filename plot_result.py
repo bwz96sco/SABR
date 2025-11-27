@@ -28,8 +28,9 @@ SIM_DP = 'sim_dp'
 # SCHEMES = ['sim_rl', SIM_DP]
 # SCHEMES = ['sim_bb', 'sim_rl', 'sim_mpc']
 
-SCHEMES = ['sim_bb', 'sim_bola', 'sim_quetra', 'sim_rmpc', 
-            'sim_bs', 'sim_mfd']
+# SCHEMES = ['sim_bb', 'sim_bola', 'sim_quetra', 'sim_rmpc', 
+#            'sim_bs', 'sim_mfd']
+SCHEMES = ['sim_bb']
 # SCHEMES = ['sim_bb', 'sim_bola', 'sim_quetra', 'sim_rmpc', 
 #            'sim_bs', 'sim_mfd', SIM_DP]
 

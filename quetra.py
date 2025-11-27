@@ -149,6 +149,9 @@ def main():
     buffer_max = 60
     abr = QuetraABR(buffer_max=buffer_max)
 
+    batch_rewards = []
+
+
     # ========== 主循环 ==========
     while True:  # serve video forever
         delay, sleep_time, buffer_size, rebuf, \
@@ -165,7 +168,6 @@ def main():
                  - SMOOTH_PENALTY * np.abs(VIDEO_BIT_RATE[bit_rate] -
                                            VIDEO_BIT_RATE[last_bit_rate]) / M_IN_K
         r_batch.append(reward)
-
         last_bit_rate = bit_rate
 
         # log time_stamp, bit_rate, buffer_size, reward
@@ -196,6 +198,8 @@ def main():
 
             last_bit_rate = DEFAULT_QUALITY
             bit_rate = DEFAULT_QUALITY  # use the default action here
+            batch_reward = np.sum(r_batch)
+            batch_rewards.append(batch_reward)
             r_batch = []
 
             print("video count", video_count)
@@ -206,6 +210,10 @@ def main():
 
             log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
             log_file = open(log_path, 'w')
+    total_reward = np.sum(batch_rewards)
+    average_reward = total_reward / len(batch_rewards)
+    print("total reward", total_reward)
+    print("average reward", average_reward)
 
 
 if __name__ == '__main__':

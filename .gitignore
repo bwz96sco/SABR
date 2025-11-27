@@ -7,7 +7,7 @@ libcore.cpython-37m-x86_64-linux-gnu.so
 **/log_sim_*
 
 comyco/*
-test_results/
+test_results/*
 model_data/*
 video_trace/trace/*
 bak/*

@@ -56,15 +56,15 @@ def main():
     # last_quality = np.log(VIDEO_BIT_RATE[last_bit_rate] / float(VIDEO_BIT_RATE[0]))
     bit_rate = DEFAULT_QUALITY
 
-    # r_batch = []
+    
     gp = 1 - 0 + (np.log(VIDEO_BIT_RATE[-1] / float(VIDEO_BIT_RATE[0])) - 0) / (BUFFER_TARGET_S/MINIMUM_BUFFER_S -1) # log
     vp = MINIMUM_BUFFER_S/(0+ gp -1)
     # gp = 1 - VIDEO_BIT_RATE[0]/1000.0 + (VIDEO_BIT_RATE[-1]/1000. - VIDEO_BIT_RATE[0]/1000.) / (BUFFER_TARGET_S/MINIMUM_BUFFER_S -1) # lin 
     # vp = MINIMUM_BUFFER_S/(VIDEO_BIT_RATE[0]/1000.0+ gp -1)
     
-
+    batch_rewards = []
+    r_batch = []
     video_count = 0
-
     while True:  # serve video forever
         # the action is from the last decision
         # this is to make the framework similar to the real
@@ -95,6 +95,8 @@ def main():
                 - REBUF_PENALTY * rebuf \
                 - SMOOTH_PENALTY * np.abs(VIDEO_BIT_RATE[bit_rate] -
                                         VIDEO_BIT_RATE[last_bit_rate]) / M_IN_K
+        
+        r_batch.append(reward)
         
         last_bit_rate = bit_rate
 
@@ -134,6 +136,10 @@ def main():
             bit_rate = DEFAULT_QUALITY  # use the default action here
 
             time_stamp = 0
+            batch_reward = np.sum(r_batch)
+            batch_rewards.append(batch_reward)
+            r_batch = []
+
 
             print("video count", video_count)
             video_count += 1
@@ -143,7 +149,11 @@ def main():
 
             log_path = LOG_FILE + '_' + all_file_names[test_env.trace_idx]
             log_file = open(log_path, 'w')
-
+    
+    total_reward = np.sum(batch_rewards)
+    average_reward = total_reward / len(batch_rewards)
+    print("total reward", total_reward)
+    print("average reward", average_reward)
 
 if __name__ == '__main__':
     main()
