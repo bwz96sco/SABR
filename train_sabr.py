@@ -25,6 +25,9 @@ from sim_env.vec_env import create_vec_env
 from rl.dagger import DaggerTrainer
 from utils_tool import utils, eval_func
 
+# Get the SABR project root directory
+_SABR_DIR = os.path.dirname(os.path.abspath(__file__))
+
 if __name__ == "__main__":
 # ---------------------------------
 # ============================================
@@ -32,7 +35,7 @@ if __name__ == "__main__":
 # =============================================
     # use for eval_model_list
     # filter log and set test script
-    test_script_name = 'test_ppo_sb.py'
+    test_script_name = os.path.join(_SABR_DIR, 'test_ppo_sb.py')
     log_suffix = 'ppo_sb'
     
     # --------------------
@@ -70,7 +73,7 @@ if __name__ == "__main__":
     
     # 4. 准备一个以当前时间命名的 tb_log_name
     now = datetime.now().strftime("%Y%m%d_%H%M%S")
-    model_save_dir = "./model_data/sabr/"
+    model_save_dir = os.path.join(_SABR_DIR, "model_data/sabr/")
     tb_log_dir = os.path.join(model_save_dir, "tensorboard", DATASET_NAME)#"./model_data/tensorboard/"
    
     # 确保目录存在
@@ -163,7 +166,7 @@ if __name__ == "__main__":
     
     print(output)
     
-    with open('Results_SABR.txt', 'a') as f:
+    with open(os.path.join(_SABR_DIR, 'Results_SABR.txt'), 'a') as f:
         f.write(output + '\n')
     print('==============================')
 

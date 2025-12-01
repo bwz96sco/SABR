@@ -39,7 +39,10 @@ print(f'DPO {dpo_train}, buffer w {BUFFER_W}, expert_algo {expert_algo}')
 # ----------------------------------
 SUMMARY_DIR_NAME = 'comyco'
 LOG_NAME = 'cmc'
-script_name = 'test_comyco.py'
+
+# Get the SABR project root directory
+_SABR_DIR = os.path.dirname(os.path.abspath(__file__))
+script_name = os.path.join(_SABR_DIR, 'test_comyco.py')
 
 
 #  LOG_NAMEcant change ;
@@ -60,7 +63,7 @@ TRAIN_SEQ_LEN = 1000  # 作为训练批次
 TRAIN_EPOCH = 500
 MODEL_SAVE_INTERVAL = 10
 # --------------------------------
-DATA_DIR = "./model_data/"
+DATA_DIR = os.path.join(_SABR_DIR, "model_data/")
 
 
 SUMMARY_DIR = os.path.join(DATA_DIR, SUMMARY_DIR_NAME)
@@ -204,7 +207,7 @@ def main():
     #  final deal:
     writer.close()
     
-    result_log_name = f'Results_{SUMMARY_DIR_NAME}.txt'
+    result_log_name = os.path.join(_SABR_DIR, f'Results_{SUMMARY_DIR_NAME}.txt')
     with open(result_log_name, 'a') as f:
         f.write(reward_output + '\n')
     print('==============================')

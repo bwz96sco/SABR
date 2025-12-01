@@ -55,9 +55,12 @@ RANDOM_SEED = np.random.randint(10000)
 
 NORMALIZED = True
 # -------------------------------
-DATA_DIR = "./model_data/"
+# Get the SABR project root directory
+_SABR_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DATA_DIR = os.path.join(_SABR_DIR, "model_data/")
 LOG_NAME = 'pensieve'
-script_name = 'test_pensieve.py'
+script_name = os.path.join(_SABR_DIR, 'test_pensieve.py')
 
 SUMMARY_DIR = os.path.join(DATA_DIR, LOG_NAME)
 TEST_LOG_FOLDER = os.path.join(SUMMARY_DIR, 'test_results')
@@ -166,7 +169,7 @@ def central_agent(ac_model, net_params_queues, exp_queues):
             # 删除旧模型，保留最多10个
             utils.cut_extra_save_model(MODEL_DIR, MAX_SAVED_MODELS, model_pref)
     
-    with open('Results_Pensieve.txt', 'a') as f:
+    with open(os.path.join(_SABR_DIR, 'Results_Pensieve.txt'), 'a') as f:
         f.write(reward_output + '\n')
     print('==============================')
                             

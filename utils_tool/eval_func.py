@@ -2,6 +2,8 @@ import os, shutil
 import time
 import numpy as np
 
+# Get the SABR project root directory (parent of utils_tool)
+_SABR_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def eval_model(model_path,  test_trace='', test_log_dir='', 
@@ -9,8 +11,13 @@ def eval_model(model_path,  test_trace='', test_log_dir='',
     # use for eval_model_list
     # filter log ( file_name ) and set test script (script_name)
 
-    # 运行测试脚本
-    os.system(f'python {script_name} {model_path} {test_trace} {test_log_dir}')
+    # Build absolute path to the script if it's not already absolute
+    if not os.path.isabs(script_name):
+        script_name = os.path.join(_SABR_DIR, script_name)
+    
+    # 运行测试脚本 (run from SABR directory to ensure imports work)
+    cmd = f'cd "{_SABR_DIR}" && python "{script_name}" "{model_path}" "{test_trace}" "{test_log_dir}"'
+    os.system(cmd)
     # time.sleep(0.5)
     # 追加测试性能到日志
     rewards, entropies, buffers = [], [], []

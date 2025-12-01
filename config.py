@@ -26,7 +26,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-3G/FCC-16/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-3G/FCC-16/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/envivio_3g/video_size_',
-        'LOG_FILE_DIR': './test_results/FCC-16/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/FCC-16/',
     },
     'FCC-18': {
         'VIDEO_BIT_RATE': [300, 750, 1200, 1850, 2850, 4300],
@@ -34,7 +34,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-3G/FCC-18/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-3G/FCC-18/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/envivio_3g/video_size_',
-        'LOG_FILE_DIR': './test_results/FCC-18/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/FCC-18/',
     },
     'Oboe': {
         'VIDEO_BIT_RATE': [300, 750, 1200, 1850, 2850, 4300],
@@ -42,7 +42,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-3G/Oboe/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-3G/Oboe/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/envivio_3g/video_size_',
-        'LOG_FILE_DIR': './test_results/Oboe/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/Oboe/',
     },
     'Puffer-21': {
         'VIDEO_BIT_RATE': [300, 750, 1200, 1850, 2850, 4300],
@@ -50,7 +50,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-3G/Puffer-21/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-3G/Puffer-21/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/envivio_3g/video_size_',
-        'LOG_FILE_DIR': './test_results/Puffer-21/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/Puffer-21/',
     },
     'Puffer-22': {
         'VIDEO_BIT_RATE': [300, 750, 1200, 1850, 2850, 4300],
@@ -58,7 +58,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-3G/Puffer-22/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-3G/Puffer-22/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/envivio_3g/video_size_',
-        'LOG_FILE_DIR': './test_results/Puffer-22/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/Puffer-22/',
     },
 
     # ---------- OOD in 3G ----------
@@ -67,7 +67,7 @@ _DATASET_OPTION = {
         'REBUF_PENALTY': 4.3,
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-3G/HSR',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/envivio_3g/video_size_',
-        'LOG_FILE_DIR': './test_results/HSR/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/HSR/',
     },
 
     # ---------- ABRBench-4G+ (use big_buck_bunny) ----------
@@ -77,7 +77,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-4G+/Norway3G/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-4G+/Norway3G/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/big_buck_bunny/video_size_',
-        'LOG_FILE_DIR': './test_results/Norway3G/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/Norway3G/',
     },
     'Lumos4G': {
         'VIDEO_BIT_RATE': [1000, 2500, 5000, 8000, 16000, 40000],
@@ -85,7 +85,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-4G+/Lumos4G/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-4G+/Lumos4G/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/big_buck_bunny/video_size_',
-        'LOG_FILE_DIR': './test_results/Lumos4G/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/Lumos4G/',
     },
     'Lumos5G': {
         'VIDEO_BIT_RATE': [1000, 2500, 5000, 8000, 16000, 40000],
@@ -93,7 +93,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-4G+/Lumos5G/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-4G+/Lumos5G/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/big_buck_bunny/video_size_',
-        'LOG_FILE_DIR': './test_results/Lumos5G/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/Lumos5G/',
     },
     'SolisWi-Fi': {
         'VIDEO_BIT_RATE': [1000, 2500, 5000, 8000, 16000, 40000],
@@ -101,7 +101,7 @@ _DATASET_OPTION = {
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-4G+/SolisWi-Fi/test',
         'TRAIN_TRACES': f'{TRACE_DIR}/ABRBench-4G+/SolisWi-Fi/train',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/big_buck_bunny/video_size_',
-        'LOG_FILE_DIR': './test_results/SolisWi-Fi/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/SolisWi-Fi/',
     },
 
     # ---------- OOD in 4G+ ----------
@@ -110,14 +110,14 @@ _DATASET_OPTION = {
         'REBUF_PENALTY': 40,
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-4G+/Ghent',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/big_buck_bunny/video_size_',
-        'LOG_FILE_DIR': './test_results/Ghent/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/Ghent/',
     },
     'Lab': {
         'VIDEO_BIT_RATE': [1000, 2500, 5000, 8000, 16000, 40000],
         'REBUF_PENALTY': 40,
         'TEST_TRACES': f'{TRACE_DIR}/ABRBench-4G+/Lab',
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/big_buck_bunny/video_size_',
-        'LOG_FILE_DIR': './test_results/Lab/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/Lab/',
     },
 
     # ---------- Mixed (composite) ----------
@@ -141,7 +141,7 @@ _DATASET_OPTION = {
         ],
         'FINE_TUNE_TRACES': [],
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/envivio_3g/video_size_',
-        'LOG_FILE_DIR': './test_results/3g_mix/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/3g_mix/',
     },
 
     'ABRBench-4G+': {
@@ -163,7 +163,7 @@ _DATASET_OPTION = {
         ],
         'FINE_TUNE_TRACES': [],
         'VIDEO_SIZE_FILE': f'{VIDEO_DIR}/big_buck_bunny/video_size_',
-        'LOG_FILE_DIR': './test_results/4gplus_mix/',
+        'LOG_FILE_DIR': f'{_CONFIG_DIR}/test_results/4gplus_mix/',
     },
 }
 
